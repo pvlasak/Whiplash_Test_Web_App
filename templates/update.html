@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+<body>
+    <h2>Edit the Whiplash Results here! </h2>
+    <br>
+    <form action="/update/{{update_variable.id}}" method="post">
+        {{ form.hidden_tag() }}
+        <table style="width:70%">
+            <tr>
+                <th> {{form.NIC.label}} </th>
+                <td> {{ form.NIC(size=32,value=update_variable.NIC) }} </td>
+            </tr>
+            <tr>
+                <th> {{form.Nkm.label}} </th>
+                <td> {{ form.Nkm(size=32,value=update_variable.Nkm) }} </td>
+            </tr>
+            <tr>
+                <th> {{form.rebound_velocity.label}} </th>
+                <td> {{ form.rebound_velocity(size=32,value=update_variable.rebound_velocity) }} </td>
+            </tr>
+                        <tr>
+                <th> {{form.Fx_upper_neck.label}} </th>
+                <td> {{ form.Fx_upper_neck(size=32,value=update_variable.Fx_upper_neck) }} </td>
+            </tr>
+                        <tr>
+                <th> {{form.Fz_upper_neck.label}} </th>
+                <td> {{ form.Fz_upper_neck(size=32,value=update_variable.Fz_upper_neck) }} </td>
+            </tr>
+                        <tr>
+                <th> {{form.T1_acceleration.label}} </th>
+                <td> {{ form.T1_acceleration(size=32,value=update_variable.T1_acceleration) }} </td>
+            </tr>
+            <tr>
+                <th> {{form.time_head_contact.label}} </th>
+                <td> {{ form.time_head_contact(size=32,value=update_variable.time_head_contact) }} </td>
+            </tr>
+        </table>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+{% endblock %}

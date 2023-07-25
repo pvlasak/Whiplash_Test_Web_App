@@ -1,0 +1,39 @@
+{% extends "base.html"  %}
+{%block content%}
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    <h2> Welcome to Whiplash Database! </h2>
+    <br>
+    <p> <a href="{{url_for('test_register')}}"> Click </a> to register a new hardware test!  </p>
+    <br>
+    <h4> We have these tests registered in database so far: </h4>
+    <table style="width:100%">
+        <tr>
+            <th>OEM</th>
+            <th>Program</th>
+            <th>Seat Row</th>
+            <th>Seat Type</th>
+            <th>Severity</th>
+            <th>Link</th>
+        </tr>
+        {% for test in template_tests %}
+        <tr>
+            <td>{{ template_samples[test.id-1].oem }} </td>
+            <td>{{ template_samples[test.id-1].program }}</td>
+            <td>{{ template_samples[test.id-1].seat_row }}</td>
+            <td>{{ template_samples[test.id-1].seat_type }} </td>
+            <td>{{ template_pulses[test.pulse_id-1].severity }} </td>
+            <td> <a href="{{ url_for('test', id=test.id) }}">{{ test.label}} </a> </td>
+        </tr>
+        {% endfor %}
+    </table>
+{%endblock%}

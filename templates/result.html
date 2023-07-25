@@ -1,0 +1,174 @@
+{% extends "base.html"  %}
+{%block content%}
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
+    {% for message in get_flashed_messages() %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+         {{ message }}
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endfor %}
+    <h4> {{template_test.label}}: </h4>
+    <br>
+    <a href="{{url_for('profile')}}"> Return </a>
+    <br>
+    <a href="{{url_for('update', id=template_result.id) }}"> Edit Results </a>
+    <br>
+    {% if template_pulse.severity == 'Low' %}
+        <table style="width:70%">
+          <tr>
+             <th>Parameter</th>
+              <th>Result Value</th>
+                <th>Lower Limit</th>
+               <th>Higher Limit</th>
+            </tr>
+            <tr>
+                <th> NIC [m2/s2]: </th>
+                <td> {{template_result.NIC}} </td>
+                <td> 9 </td>
+                <td> 15 </td>
+            </tr>
+            <tr>
+                <th> Nkm [-]: </th>
+                <td> {{template_result.Nkm}} </td>#
+                <td> 0.12 </td>
+                <td> 0.35 </td>
+            </tr>
+            <tr>
+                <th> Rebound Velocity [m/s]: </th>
+                <td> {{template_result.rebound_velocity}} </td>
+                <td> 3.00 </td>
+                <td> 4.40 </td>
+            </tr>
+            <tr>
+                <th> Fx Upper Neck [N]: </th>
+                <td> {{template_result.Fx_upper_neck}} </td>
+                <td> 30 </td>
+                <td> 110 </td>
+            </tr>
+            <tr>
+                <th> Fz Upper Neck [N]: </th>
+                <td> {{template_result.Fz_upper_neck}} </td>
+                <td> 270 </td>
+                <td> 610 </td>
+            </tr>
+            <tr>
+                <th> T1 Acceleration [g]: </th>
+                <td> {{template_result.T1_acceleration}} </td>
+                <td> 9.4 </td>
+                <td> 12.0 </td>
+            </tr>
+            <tr>
+                <th> Time of Head Contact [ms] </th>
+                <td> {{template_result.time_head_contact}} </td>
+                <td> 55 </td>
+                <td> 77 </td>
+            </tr>
+        </table>
+    {% elif template_pulse.severity == 'Medium' %}
+        <table style="width:70%">
+          <tr>
+             <th>Parameter</th>
+              <th>Result Value</th>
+                <th>Lower Limit</th>
+               <th>Higher Limit</th>
+            </tr>
+            <tr>
+                <th> NIC [m2/s2]: </th>
+                <td> {{template_result.NIC}} </td>
+                <td> 11 </td>
+                <td> 24 </td>
+            </tr>
+            <tr>
+                <th> Nkm [-]: </th>
+                <td> {{template_result.Nkm}} </td>#
+                <td> 0.15 </td>
+                <td> 0.55 </td>
+            </tr>
+            <tr>
+                <th> Rebound Velocity [m/s]: </th>
+                <td> {{template_result.rebound_velocity}} </td>
+                <td> 3.20 </td>
+                <td> 4.80 </td>
+            </tr>
+            <tr>
+                <th> Fx Upper Neck [N] </th>
+                <td> {{template_result.Fx_upper_neck}} </td>
+                <td> 30 </td>
+                <td> 190 </td>
+            </tr>
+            <tr>
+                <th> Fz Upper Neck [N]: </th>
+                <td> {{template_result.Fz_upper_neck}} </td>
+                <td> 360 </td>
+                <td> 750 </td>
+            </tr>
+            <tr>
+                <th> T1 Acceleration [g]: </th>
+                <td> {{template_result.T1_acceleration}} </td>
+                <td> 9.3 </td>
+                <td> 13.1 </td>
+            </tr>
+            <tr>
+                <th> Time of Head Contact [ms]: </th>
+                <td> {{template_result.time_head_contact}} </td>
+                <td> 51 </td>
+                <td> 76 </td>
+            </tr>
+        </table>
+    {% else %}
+        <table style="width:70%">
+          <tr>
+             <th>Parameter</th>
+              <th>Result Value</th>
+                <th>Lower Limit</th>
+               <th>Higher Limit</th>
+            </tr>
+            <tr>
+                <th> NIC [m2/s2]: </th>
+                <td> {{template_result.NIC}} </td>
+                <td> 13 </td>
+                <td> 23 </td>
+            </tr>
+            <tr>
+                <th> Nkm [-]: </th>
+                <td> {{template_result.Nkm}} </td>#
+                <td> 0.22 </td>
+                <td> 0.47 </td>
+            </tr>
+            <tr>
+                <th> Rebound Velocity [m/s]: </th>
+                <td> {{template_result.rebound_velocity}} </td>
+                <td> 4.10 </td>
+                <td> 5.50 </td>
+            </tr>
+            <tr>
+                <th> Fx Upper Neck [N]: </th>
+                <td> {{template_result.Fx_upper_neck}} </td>
+                <td> 30 </td>
+                <td> 210 </td>
+            </tr>
+            <tr>
+                <th> Fz Upper Neck [N]: </th>
+                <td> {{template_result.Fz_upper_neck}} </td>
+                <td> 470 </td>
+                <td> 770 </td>
+            </tr>
+            <tr>
+                <th> T1 Acceleration [m/s]: </th>
+                <td> {{template_result.T1_acceleration}} </td>
+                <td> 12.5 </td>
+                <td> 15.9 </td>
+            </tr>
+            <tr>
+                <th> Time of Head Contact [ms]: </th>
+                <td> {{template_result.time_head_contact}} </td>
+                <td> 48 </td>
+                <td> 75 </td>
+            </tr>
+        </table>
+    {% endif %}
+{%endblock%}

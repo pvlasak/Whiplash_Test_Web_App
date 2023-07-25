@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<body>
+    <h2>Register a new hardware test here! </h2>
+    <br>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.label(size=32,placeholder="Test ID") }}<br>
+            {% for error in form.label.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.OEM(size=32,placeholder="OEM name") }}<br>
+            {% for error in form.OEM.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Program(size=32,placeholder="Program Name") }}<br>
+            {% for error in form.Program.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Seat_Row(size=32,placeholder="1, 2, 3") }}<br>
+            {% for error in form.Seat_Row.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Seat_Type(size=32,placeholder="Driver/Passenger") }}<br>
+            {% for error in form.Seat_Type.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <tr>{% for btn in form.Pulse %}
+            <td>{{ btn }}</td>
+            <td>{{ btn.label }}</td>
+            {% endfor %}
+        </tr>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+{% endblock %}
