@@ -4,6 +4,16 @@
 table, th, td {
   border:1px solid black;
 }
+.button1 {
+  background-color: grey;
+  color: black;
+  border: 2px solid black;
+}
+.button2 {
+  background-color: blue;
+  color: black;
+  border: 2px solid white;
+}
 </style>
     {% for message in get_flashed_messages() %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -11,19 +21,22 @@ table, th, td {
          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-    <h4> {{template_test.label}}: </h4>
     <br>
-    <a href="{{url_for('profile')}}"> Return </a>
+    <div>
+        <a href="{{url_for('profile')}}"> <button class="button button1"> < Return </button> </a>
+        <p style="font-size:160%;"> {{template_test.label}} </p>
+    </div>
     <br>
-    <a href="{{url_for('update', id=template_result.id) }}"> Edit Results </a>
-    <br>
+    <div>
+    <a href="{{url_for('update', id=template_result.id) }}"> <button class="button button2">Edit Results</button> </a>
+    </div>
     {% if template_pulse.severity == 'Low' %}
         <table style="width:70%">
-          <tr>
-             <th>Parameter</th>
-              <th>Result Value</th>
+            <tr>
+                <th>Parameter</th>
+                <th>Result Value</th>
                 <th>Lower Limit</th>
-               <th>Higher Limit</th>
+                <th>Higher Limit</th>
             </tr>
             <tr>
                 <th> NIC [m2/s2]: </th>
@@ -33,7 +46,7 @@ table, th, td {
             </tr>
             <tr>
                 <th> Nkm [-]: </th>
-                <td> {{template_result.Nkm}} </td>#
+                <td> {{template_result.Nkm}} </td>
                 <td> 0.12 </td>
                 <td> 0.35 </td>
             </tr>
@@ -70,11 +83,11 @@ table, th, td {
         </table>
     {% elif template_pulse.severity == 'Medium' %}
         <table style="width:70%">
-          <tr>
-             <th>Parameter</th>
-              <th>Result Value</th>
+            <tr>
+                <th>Parameter</th>
+                <th>Result Value</th>
                 <th>Lower Limit</th>
-               <th>Higher Limit</th>
+                <th>Higher Limit</th>
             </tr>
             <tr>
                 <th> NIC [m2/s2]: </th>
@@ -84,7 +97,7 @@ table, th, td {
             </tr>
             <tr>
                 <th> Nkm [-]: </th>
-                <td> {{template_result.Nkm}} </td>#
+                <td> {{template_result.Nkm}} </td>
                 <td> 0.15 </td>
                 <td> 0.55 </td>
             </tr>
@@ -121,11 +134,11 @@ table, th, td {
         </table>
     {% else %}
         <table style="width:70%">
-          <tr>
-             <th>Parameter</th>
-              <th>Result Value</th>
+            <tr>
+                <th>Parameter</th>
+                <th>Result Value</th>
                 <th>Lower Limit</th>
-               <th>Higher Limit</th>
+                <th>Higher Limit</th>
             </tr>
             <tr>
                 <th> NIC [m2/s2]: </th>
@@ -135,7 +148,7 @@ table, th, td {
             </tr>
             <tr>
                 <th> Nkm [-]: </th>
-                <td> {{template_result.Nkm}} </td>#
+                <td> {{template_result.Nkm}} </td>
                 <td> 0.22 </td>
                 <td> 0.47 </td>
             </tr>

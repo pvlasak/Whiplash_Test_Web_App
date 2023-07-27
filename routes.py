@@ -2,7 +2,6 @@ from forms import LoginForm, UserRegistrationForm, TestRegistrationForm, ResultF
 from app import app, db, login_manager
 from models import *
 from flask import render_template, redirect, url_for, flash, request
-from urllib.parse import urlparse
 from flask_login import current_user, login_user, logout_user, login_required
 
 
@@ -18,6 +17,9 @@ def load_user(user_id):
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        flash("User is authenticated!Redirecting to database...")
+        return redirect(url_for('profile'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -96,6 +98,7 @@ def test(id):
 def update(id):
     form = ResultForm()
     result_to_update = Result.query.get_or_404(id)
+    test_data = Test.query.get(id)
     if request.method == "POST":
         result_to_update.NIC = request.form['NIC']
         result_to_update.Nkm = request.form['Nkm']
@@ -110,6 +113,8 @@ def update(id):
             return redirect(url_for('test', id=id, _external=True, _scheme='http'))
         except:
             flash("Error! Looks like there is a problem.")
-            return render_template("update.html", form=form, update_variable=result_to_update)
+            return render_template("update.html", form=form, update_variable=result_to_update,
+                                   label_variable=test_data.label)
     else:
-        return render_template("update.html", form=form, update_variable=result_to_update)
+        return render_template("update.html", form=form, update_variable=result_to_update,
+                               label_variable=test_data.label)

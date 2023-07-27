@@ -38,3 +38,4 @@ class ResultForm(FlaskForm):
     T1_acceleration = FloatField("T1 Acceleration", validators=[DataRequired()])
     time_head_contact = FloatField("Time Head Contact", validators=[DataRequired()])
     submit = SubmitField('Update Results!')
+    cancel = SubmitField('Cancel')

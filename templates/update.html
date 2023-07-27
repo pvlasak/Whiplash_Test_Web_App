@@ -7,7 +7,7 @@
         </div>
     {% endfor %}
 <body>
-    <h2>Edit the Whiplash Results here! </h2>
+    <h4> Edit the result data for {{ label_variable }}: </h4>
     <br>
     <form action="/update/{{update_variable.id}}" method="post">
         {{ form.hidden_tag() }}
@@ -41,7 +41,8 @@
                 <td> {{ form.time_head_contact(size=32,value=update_variable.time_head_contact) }} </td>
             </tr>
         </table>
-        <p>{{ form.submit() }}</p>
+        <p>{{ form.submit() }} </p>
+        <a href="{{ url_for('profile') }}" class="btn btn-secondary"> Abort </a>
     </form>
 </body>
 {% endblock %}
