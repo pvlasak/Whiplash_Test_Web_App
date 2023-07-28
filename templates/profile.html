@@ -24,6 +24,7 @@ table, th, td {
             <th>Seat Type</th>
             <th>Severity</th>
             <th>Link</th>
+            <th>Command</th>
         </tr>
         {% for test in template_tests %}
         <tr>
@@ -33,6 +34,7 @@ table, th, td {
             <td>{{ template_samples[test.id-1].seat_type }} </td>
             <td>{{ template_pulses[test.pulse_id-1].severity }} </td>
             <td> <a href="{{ url_for('test', id=test.id) }}">{{ test.label}} </a> </td>
+            <td> <a href="{{ url_for('delete_test', id=test.id) }}"> Delete </a> </td>
         </tr>
         {% endfor %}
     </table>

@@ -95,6 +95,7 @@ def test(id):
 
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
+@login_required
 def update(id):
     form = ResultForm()
     result_to_update = Result.query.get_or_404(id)
@@ -118,3 +119,25 @@ def update(id):
     else:
         return render_template("update.html", form=form, update_variable=result_to_update,
                                label_variable=test_data.label)
+
+
+@app.route('/delete_test/<int:id>', methods=['GET', 'POST'])
+@login_required
+def delete_test(id):
+    test_to_delete = Test.query.get_or_404(id)
+    try:
+        db.session.delete(test_to_delete)
+        db.session.commit()
+        flash("Test record deleted successfully!")
+        all_tests = Test.query.all()
+        samples = Sample.query.all()
+        pulses = Pulse.query.all()
+        return render_template('profile.html', template_tests=all_tests, template_samples=samples,
+                               template_pulses=pulses)
+    except:
+        flash("There was a problem deleting test record.")
+        all_tests = Test.query.all()
+        samples = Sample.query.all()
+        pulses = Pulse.query.all()
+        return render_template('profile.html', template_tests=all_tests, template_samples=samples,
+                               template_pulses=pulses)
