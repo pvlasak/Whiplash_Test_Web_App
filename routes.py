@@ -1,3 +1,5 @@
+from sqlalchemy import desc
+
 from forms import LoginForm, UserRegistrationForm, TestRegistrationForm, ResultForm
 from app import app, db, login_manager
 from models import *
@@ -67,7 +69,8 @@ def user_register():
 @app.route('/test_register', methods=['GET', 'POST'])
 def test_register():
     form = TestRegistrationForm()
-    sequence_id = len(Test.query.all()) + 1
+    last_id = Test.query.order_by(desc(Test.id)).first().id
+    sequence_id = last_id + 1
     if form.validate_on_submit():
         sample = Sample(id=sequence_id, oem=form.OEM.data, program=form.Program.data, seat_row=form.Seat_Row.data,
                         seat_type=form.Seat_Type.data)
