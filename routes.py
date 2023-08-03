@@ -1,6 +1,6 @@
 from sqlalchemy import desc
 
-from forms import LoginForm, UserRegistrationForm, TestRegistrationForm, ResultForm
+from forms import LoginForm, UserRegistrationForm, TestRegistrationForm, ResultForm, SampleRegistrationForm
 from app import app, db, login_manager
 from models import *
 from flask import render_template, redirect, url_for, flash, request
@@ -66,21 +66,35 @@ def user_register():
     return render_template('user_register.html', title='Register', form=form)
 
 
-@app.route('/test_register', methods=['GET', 'POST'])
-def test_register():
-    form = TestRegistrationForm()
-    last_id = Test.query.order_by(desc(Test.id)).first().id
-    sequence_id = last_id + 1
+@app.route('/sample_register', methods=['GET', 'POST'])
+def sample_register():
+    form = SampleRegistrationForm()
     if form.validate_on_submit():
-        sample = Sample(id=sequence_id, oem=form.OEM.data, program=form.Program.data, seat_row=form.Seat_Row.data,
+        sample = Sample(oem=form.OEM.data, program=form.Program.data, seat_row=form.Seat_Row.data,
                         seat_type=form.Seat_Type.data)
+        db.session.add(sample)
+        db.session.commit()
+        flash('Sample for {} OEM in {} program has been registered'.format(sample.oem, sample.program))
+        return redirect(url_for('profile'))
+    return render_template('sample_register.html', title='Register Sample', form=form)
+
+
+@app.route('/test_register/<int:sample_id>', methods=['GET', 'POST'])
+def test_register(sample_id):
+    form = TestRegistrationForm()
+    sample = Sample.query.get(sample_id)
+    if Test.query.count() == 0:
+        sequence_id = 1
+    else:
+        last_id = Test.query.order_by(desc(Test.id)).first().id
+        sequence_id = last_id + 1
+    if form.validate_on_submit():
         pulse = Pulse.query.filter_by(severity=form.Pulse.data).first()
+        test_data = Test(id=sequence_id, label=form.label.data, pulse_id=pulse.id, sample_id=sample.id)
         result = Result(id=sequence_id, NIC=0, Nkm=0, rebound_velocity=0,
                         Fx_upper_neck=0, Fz_upper_neck=0,
-                        T1_acceleration=0, time_head_contact=0)
-        test_data = Test(id=sequence_id, label=form.label.data, sample_id=sample.id, pulse_id=pulse.id,
-                         result_id=result.id)
-        db.session.add_all([sample, result, test_data])
+                        T1_acceleration=0, time_head_contact=0, test_id=test_data.id)
+        db.session.add_all([result, test_data])
         db.session.commit()
         flash('Test registered successfully!')
         return redirect(url_for('test', id=sequence_id, _external=True, _scheme='http'))

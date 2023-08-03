@@ -18,13 +18,17 @@ class UserRegistrationForm(FlaskForm):
     submit = SubmitField('Register')
 
 
-class TestRegistrationForm(FlaskForm):
-    severity_choices = [("Low", "Low"), ("Medium", "Medium"), ("High", "High")]
-    label = StringField("Test ID", validators=[DataRequired()])
+class SampleRegistrationForm(FlaskForm):
     OEM = StringField("OEM", validators=[DataRequired()])
     Program = StringField("Program", validators=[DataRequired()])
     Seat_Row = StringField("Seat Row", validators=[DataRequired()])
     Seat_Type = StringField("Seat Type", validators=[DataRequired()])
+    submit = SubmitField('Register Seat Sample')
+
+
+class TestRegistrationForm(FlaskForm):
+    severity_choices = [("Low", "Low"), ("Medium", "Medium"), ("High", "High")]
+    label = StringField("Test Label", validators=[DataRequired()])
     Pulse = RadioField("Pulse Severity", choices=severity_choices)
     submit = SubmitField('Register Hardware Test')
 

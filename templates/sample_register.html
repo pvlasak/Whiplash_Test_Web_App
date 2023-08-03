@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<body>
+<h2>Register a seat sample here: </h2>
+    <br>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.OEM(size=32,placeholder="OEM name") }}<br>
+            {% for error in form.OEM.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Program(size=32,placeholder="Program Name") }}<br>
+            {% for error in form.Program.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Seat_Row(size=32,placeholder="1, 2, 3") }}<br>
+            {% for error in form.Seat_Row.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.Seat_Type(size=32,placeholder="Driver/Passenger") }}<br>
+            {% for error in form.Seat_Type.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+</body>
+{% endblock %}

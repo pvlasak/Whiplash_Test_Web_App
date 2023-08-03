@@ -13,28 +13,32 @@ table, th, td {
     {% endfor %}
     <h2 style="color:red"> Welcome to Whiplash Database! </h2>
     <br>
-    <p> <a href="{{url_for('test_register')}}"> Click </a> to register a new hardware test!  </p>
+    <h4> We have these seat versions registered in database so far: </h4>
+    <p> <a href="{{url_for('sample_register')}}"> Click </a> to register a new seat version!  </p>
     <br>
-    <h4> We have these tests registered in database so far: </h4>
     <table style="width:100%">
         <tr>
             <th>OEM</th>
             <th>Program</th>
             <th>Seat Row</th>
             <th>Seat Type</th>
-            <th>Severity</th>
-            <th>Link</th>
-            <th>Command</th>
+            <th>Hardware Tests</th>
         </tr>
-        {% for test in template_tests %}
+        {% for sample in template_samples %}
         <tr>
-            <td>{{ template_samples[test.id-1].oem }} </td>
-            <td>{{ template_samples[test.id-1].program }}</td>
-            <td>{{ template_samples[test.id-1].seat_row }}</td>
-            <td>{{ template_samples[test.id-1].seat_type }} </td>
-            <td>{{ template_pulses[test.pulse_id-1].severity }} </td>
-            <td> <a href="{{ url_for('test', id=test.id) }}">{{ test.label}} </a> </td>
-            <td> <a href="{{ url_for('delete_test', id=test.id) }}"> Delete </a> </td>
+            <td>{{ template_samples[sample.id-1].oem }} </td>
+            <td>{{ template_samples[sample.id-1].program }}</td>
+            <td>{{ template_samples[sample.id-1].seat_row }}</td>
+            <td>{{ template_samples[sample.id-1].seat_type }} </td>
+            <td>
+                {% for test in template_tests %}
+                    {% if test.sample_id == sample.id %}
+                        <li> {{ test.label }} - <a href="{{url_for('test', id=test.id)}}"> View </a> - <a href="{{url_for('update', id=test.id)}}"> Edit </a> - <a href="{{url_for('delete_test', id=test.id)}}"> Delete </a></li>
+                    {% endif %}
+                {% endfor %}
+                </br>
+                <a href="{{url_for('test_register', sample_id=sample.id)}}"> >> Register a new hardware test << </a>
+            </td>
         </tr>
         {% endfor %}
     </table>

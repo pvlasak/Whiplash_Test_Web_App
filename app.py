@@ -43,9 +43,28 @@ def check_all_users_db():
     print(users)
 
 
+def fetch_all_results():
+    with app.app_context():
+        all_results = Result.query.all()
+    print(all_results)
+
+
+def fetch_all_samples():
+    with app.app_context():
+        all_samples = Sample.query.all()
+    print(all_samples)
+
+
+def fetch_all_tests():
+    with app.app_context():
+        all_tests = Test.query.all()
+    print(all_tests)
+
+
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
 
 from routes import *
 
