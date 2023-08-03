@@ -67,6 +67,7 @@ def user_register():
 
 
 @app.route('/sample_register', methods=['GET', 'POST'])
+@login_required
 def sample_register():
     form = SampleRegistrationForm()
     if form.validate_on_submit():
@@ -80,6 +81,7 @@ def sample_register():
 
 
 @app.route('/test_register/<int:sample_id>', methods=['GET', 'POST'])
+@login_required
 def test_register(sample_id):
     form = TestRegistrationForm()
     sample = Sample.query.get(sample_id)
