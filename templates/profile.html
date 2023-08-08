@@ -18,18 +18,18 @@ table, th, td {
     <br>
     <table style="width:100%">
         <tr>
-            <th>OEM</th>
-            <th>Program</th>
-            <th>Seat Row</th>
-            <th>Seat Type</th>
-            <th>Hardware Tests</th>
+            <th style="text-align: center">OEM</th>
+            <th style="text-align: center">Program</th>
+            <th style="text-align: center">Seat Row</th>
+            <th style="text-align: center">Seat Type</th>
+            <th style="text-align: center">Hardware Tests</th>
         </tr>
         {% for sample in template_samples %}
         <tr>
-            <td>{{ template_samples[sample.id-1].oem }} </td>
-            <td>{{ template_samples[sample.id-1].program }}</td>
-            <td>{{ template_samples[sample.id-1].seat_row }}</td>
-            <td>{{ template_samples[sample.id-1].seat_type }} </td>
+            <td style="text-align: center">{{ template_samples[sample.id-1].oem }} </td>
+            <td style="text-align: center">{{ template_samples[sample.id-1].program }}</td>
+            <td style="text-align: center">{{ template_samples[sample.id-1].seat_row }}</td>
+            <td style="text-align: center">{{ template_samples[sample.id-1].seat_type }} </td>
             <td>
                 {% for test in template_tests %}
                     {% if test.sample_id == sample.id %}

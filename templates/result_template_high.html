@@ -1,0 +1,107 @@
+{% set NIC_Bottom_High = 13.0 %}
+{% set NIC_Top_High = 23.0 %}
+{% set Nkm_Bottom_High = 0.22 %}
+{% set Nkm_Top_High = 0.47 %}
+{% set Rebound_Vel_Bottom_High = 4.1 %}
+{% set Rebound_Vel_Top_High = 5.50 %}
+{% set Fx_UN_Bottom_High = 30 %}
+{% set Fx_UN_Top_High = 210 %}
+{% set Fz_UN_Bottom_High = 470 %}
+{% set Fz_UN_Top_High = 770 %}
+{% set T1_acc_Bottom_High = 12.5 %}
+{% set T1_acc_Top_High = 15.9 %}
+{% set Time_Cont_Bottom_High = 48 %}
+{% set Time_Cont_Top_High = 75 %}
+
+<table style="width:70%">
+            <tr>
+                <th>Parameter</th>
+                <th>Result Value</th>
+                <th>Lower Limit</th>
+                <th>Higher Limit</th>
+            </tr>
+            <tr>
+                <th> NIC [m2/s2]: </th>
+                {% if template_result.NIC < NIC_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.NIC}} </td>
+                {%elif ((template_result.NIC >= NIC_Bottom_High) and (template_result.NIC < NIC_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.NIC}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.NIC}} </td>
+                {%endif%}
+                <td> {{NIC_Bottom_High}} </td>
+                <td> {{NIC_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> Nkm [-]: </th>
+             {% if template_result.Nkm < Nkm_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.Nkm}} </td>
+                {%elif ((template_result.Nkm >= Nkm_Bottom_High) and (template_result.Nkm < Nkm_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.Nkm}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.Nkm}} </td>
+                {%endif%}
+                <td> {{Nkm_Bottom_High}} </td>
+                <td> {{Nkm_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> Rebound Velocity [m/s]: </th>
+                {% if template_result.rebound_velocity < Rebound_Vel_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.rebound_velocity}} </td>
+                {%elif ((template_result.rebound_velocity >= Rebound_Vel_Bottom_High) and (template_result.rebound_velocity < Rebound_Vel_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.rebound_velocity}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.rebound_velocity}} </td>
+                {%endif%}
+                <td> {{Rebound_Vel_Bottom_High}} </td>
+                <td> {{Rebound_Vel_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> Fx Upper Neck [N]: </th>
+                {% if template_result.Fx_upper_neck < Fx_UN_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.Fx_upper_neck}} </td>
+                {%elif ((template_result.Fx_upper_neck >= Fx_UN_Bottom_High) and (template_result.Fx_upper_neck < Fx_UN_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.Fx_upper_neck}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.Fx_upper_neck}} </td>
+                {%endif%}
+                <td> {{Fx_UN_Bottom_High}} </td>
+                <td> {{Fx_UN_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> Fz Upper Neck [N]: </th>
+                 {% if template_result.Fz_upper_neck < Fz_UN_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.Fz_upper_neck}} </td>
+                {%elif ((template_result.Fz_upper_neck >= Fz_UN_Bottom_High) and (template_result.Fz_upper_neck < Fz_UN_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.Fz_upper_neck}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.Fz_upper_neck}} </td>
+                {%endif%}
+                <td> {{Fz_UN_Bottom_High}} </td>
+                <td> {{Fz_UN_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> T1 Acceleration [g]: </th>
+                {% if template_result.T1_acceleration < T1_acc_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.T1_acceleration}} </td>
+                {%elif ((template_result.T1_acceleration >= T1_acc_Bottom_High) and (template_result.T1_acceleration < T1_acc_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.T1_acceleration}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.T1_acceleration}} </td>
+                {%endif%}
+                <td> {{T1_acc_Bottom_High}} </td>
+                <td> {{T1_acc_Top_High}} </td>
+            </tr>
+            <tr>
+                <th> Time of Head Contact [ms] </th>
+                {% if template_result.time_head_contact < Time_Cont_Bottom_High %}
+                    <td bgcolor="green"> {{template_result.time_head_contact}} </td>
+                {%elif ((template_result.time_head_contact >= Time_Cont_Bottom_High) and (template_result.time_head_contact < Time_Cont_Top_High)) %}
+                    <td bgcolor="yellow"> {{template_result.time_head_contact}} </td>
+                {% else %}
+                    <td bgcolor="red"> {{template_result.time_head_contact}} </td>
+                {%endif%}
+                <td> {{Time_Cont_Bottom_High}} </td>
+                <td> {{Time_Cont_Top_High}} </td>
+            </tr>
+</table>
