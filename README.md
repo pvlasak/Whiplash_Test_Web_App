@@ -1,4 +1,5 @@
 # Whiplash Test Result Database
+Please note that data saved in the database are not real and are not derived from the real EuroNCAP test. 
 
 ## Description:
 In this project a web based application is created using Flask framework which is intended for gathering the result data
