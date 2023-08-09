@@ -7,7 +7,7 @@ It helps engineers to store and study neck injury criteria during the reat impac
 The users may document the details regarding car seat version and record test result set for specified hardware test
 conducted.
 
-##Features:
+## Features:
 + user register to access the application. Authentication process is done by email and password.
 + Seat version register
 + Test and result values register
