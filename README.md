@@ -1,4 +1,3 @@
- t Single-database configuration for Flask.
 # Whiplash Test Result Database
 
 ## Description:
