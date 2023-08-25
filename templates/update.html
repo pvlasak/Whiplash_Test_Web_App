@@ -11,46 +11,69 @@
     <br>
     <form action="/update/{{update_variable.id}}" method="post">
         {{ form.hidden_tag() }}
-        <table style="width:70%">
-            <tr>
-                <th> {{form.Backset.label}} </th>
-                <td> {{ form.Backset(size=32,value=update_variable.backset) }} </td>
-            </tr>
-            <tr>
-                <th> {{form.Height.label}} </th>
-                <td> {{ form.Height(size=32,value=update_variable.height) }} </td>
-            </tr>
-            <tr>
-                <th> {{form.NIC.label}} </th>
-                <td> {{ form.NIC(size=32,value=update_variable.NIC) }} </td>
-            </tr>
-            <tr>
-                <th> {{form.Nkm.label}} </th>
-                <td> {{ form.Nkm(size=32,value=update_variable.Nkm) }} </td>
-            </tr>
-            <tr>
-                <th> {{form.rebound_velocity.label}} </th>
-                <td> {{ form.rebound_velocity(size=32,value=update_variable.rebound_velocity) }} </td>
-            </tr>
-                        <tr>
-                <th> {{form.Fx_upper_neck.label}} </th>
-                <td> {{ form.Fx_upper_neck(size=32,value=update_variable.Fx_upper_neck) }} </td>
-            </tr>
-                        <tr>
-                <th> {{form.Fz_upper_neck.label}} </th>
-                <td> {{ form.Fz_upper_neck(size=32,value=update_variable.Fz_upper_neck) }} </td>
-            </tr>
-                        <tr>
-                <th> {{form.T1_acceleration.label}} </th>
-                <td> {{ form.T1_acceleration(size=32,value=update_variable.T1_acceleration) }} </td>
-            </tr>
-            <tr>
-                <th> {{form.time_head_contact.label}} </th>
-                <td> {{ form.time_head_contact(size=32,value=update_variable.time_head_contact) }} </td>
-            </tr>
-        </table>
-        <p>{{ form.submit() }} </p>
-        <a href="{{ url_for('profile') }}" class="btn btn-secondary"> Abort </a>
+        <div class="row">
+            <label for="Backset" class="col-sm-2 col-form-label"> Backset </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="Backset" name="Backset" value="{{ update_variable.backset }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="Height" class="col-sm-2 col-form-label"> Height </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="Height" name="Height" value="{{ update_variable.height }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="NIC" class="col-sm-2 col-form-label"> NIC </label>
+            <div class="col-sm-2">
+            <input type="number" step=".01" class="form-control" id="NIC" name="NIC" value="{{ update_variable.NIC }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="Nkm" class="col-sm-2 col-form-label"> Nkm </label>
+            <div class="col-sm-2">
+            <input type="number" step=".01" class="form-control" id="Nkm" name="Nkm" value="{{ update_variable.Nkm }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="rebound_velocity" class="col-sm-2 col-form-label"> Rebound Velocity </label>
+            <div class="col-sm-2">
+            <input type="number" step=".01" class="form-control" id="rebound_velocity" name="rebound_velocity" value="{{ update_variable.rebound_velocity }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="Fx_upper_neck" class="col-sm-2 col-form-label"> Fx Upper Neck </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="Fx_upper_neck" name="Fx_upper_neck" value="{{ update_variable.Fx_upper_neck }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="Fz_upper_neck" class="col-sm-2 col-form-label"> Fz Upper Neck </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="Fz_upper_neck" name="Fz_upper_neck" value="{{ update_variable.Fz_upper_neck }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="T1_acceleration" class="col-sm-2 col-form-label"> T1 Acceleration </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="T1_acceleration" name="T1_acceleration" value="{{ update_variable.T1_acceleration }}">
+            </div>
+        </div>
+        <div class="row">
+            <label for="time_head_contact" class="col-sm-2 col-form-label"> Time of Head Contact </label>
+            <div class="col-sm-2">
+            <input type="number" step=".1" class="form-control" id="time_head_contact" name="time_head_contact" value="{{ update_variable.time_head_contact }}">
+            </div>
+        </div>
+        </br>
+        <div class="row gx-3">
+            <div class="col-2">
+                <p>{{ form.submit(class="btn btn-primary") }} </p>
+            </div>
+            <div class="col-2">
+                <a href="{{ url_for('profile') }}" class="btn btn-secondary"> Abort </a>
+            </div>
+        </div>
     </form>
 </body>
 {% endblock %}
