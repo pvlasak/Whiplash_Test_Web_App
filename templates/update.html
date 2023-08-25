@@ -13,6 +13,14 @@
         {{ form.hidden_tag() }}
         <table style="width:70%">
             <tr>
+                <th> {{form.Backset.label}} </th>
+                <td> {{ form.Backset(size=32,value=update_variable.backset) }} </td>
+            </tr>
+            <tr>
+                <th> {{form.Height.label}} </th>
+                <td> {{ form.Height(size=32,value=update_variable.height) }} </td>
+            </tr>
+            <tr>
                 <th> {{form.NIC.label}} </th>
                 <td> {{ form.NIC(size=32,value=update_variable.NIC) }} </td>
             </tr>

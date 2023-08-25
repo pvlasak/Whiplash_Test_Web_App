@@ -93,7 +93,7 @@ def test_register(sample_id):
     if form.validate_on_submit():
         pulse = Pulse.query.filter_by(severity=form.Pulse.data).first()
         test_data = Test(id=sequence_id, label=form.label.data, pulse_id=pulse.id, sample_id=sample.id)
-        result = Result(id=sequence_id, NIC=0, Nkm=0, rebound_velocity=0,
+        result = Result(id=sequence_id, backset=0, height=0, NIC=0, Nkm=0, rebound_velocity=0,
                         Fx_upper_neck=0, Fz_upper_neck=0,
                         T1_acceleration=0, time_head_contact=0, test_id=test_data.id)
         db.session.add_all([result, test_data])
@@ -120,6 +120,8 @@ def update(id):
     result_to_update = Result.query.get_or_404(id)
     test_data = Test.query.get(id)
     if request.method == "POST":
+        result_to_update.backset = request.form['Backset']
+        result_to_update.height = request.form['Height']
         result_to_update.NIC = request.form['NIC']
         result_to_update.Nkm = request.form['Nkm']
         result_to_update.rebound_velocity = request.form['rebound_velocity']

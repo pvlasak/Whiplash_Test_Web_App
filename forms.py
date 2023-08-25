@@ -34,6 +34,8 @@ class TestRegistrationForm(FlaskForm):
 
 
 class ResultForm(FlaskForm):
+    Backset = FloatField("Backset")
+    Height = FloatField("Height")
     NIC = FloatField("NIC", validators=[DataRequired()])
     Nkm = FloatField("Nkm", validators=[DataRequired()])
     rebound_velocity = FloatField("Rebound Velocity", validators=[DataRequired()])

@@ -46,6 +46,8 @@ class Test(db.Model):
 
 class Result(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    backset = db.Column(db.Float, unique=False)
+    height = db.Column(db.Float, unique=False)
     NIC = db.Column(db.Float, index=False, unique=False)
     Nkm = db.Column(db.Float, index=False, unique=False)
     rebound_velocity = db.Column(db.Float, index=False, unique=False)
