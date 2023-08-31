@@ -1,9 +1,13 @@
 {% extends "base.html"  %}
 {%block content%}
     <h1> Welcome to Whiplash Database! </h1>
-    <p> New User? <a href="{{url_for('user_register')}}"> Click to register! </a> </p>
-    <img src="./static/images/whiplash_pic_01.jpg", style="width:732px;height:399px;">
-    </br>
-    <p1> <a href="https://www.youtube.com/watch?v=Orl8J5gyAt0"> Source: </a>  Euro NCAP </p1>
+    <div class="container">
+        <p> New User? <a href="{{url_for('user_register')}}"> Click to register! </a> </p>
+        <figure>
+            <img src="./static/images/whiplash_pic_01.jpg", style="width:586px;height:319px;">
+            <br>
+            <a href="https://www.youtube.com/watch?v=Orl8J5gyAt0" target="_blank"> <figcation> Euro NCAP Whiplash Test </figcation></a>
+        </figure>
+    </div>
 {%endblock%}
 

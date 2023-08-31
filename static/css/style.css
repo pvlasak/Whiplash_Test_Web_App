@@ -5,3 +5,19 @@ h1 {
 body {
     background: #f4f4f4;
 }
+
+footer {
+  margin-top: 50px;
+  text-align: center;
+  position: fixed;
+  width: 100%;
+  bottom: 5px;
+  background-color: #212529;
+  z-index: 2;
+  color: white;
+}
+
+.container {
+  margin: 0 auto;
+  height: auto;
+}
