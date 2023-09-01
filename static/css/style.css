@@ -21,3 +21,13 @@ footer {
   margin: 0 auto;
   height: auto;
 }
+
+a[href*='github'] {
+  text-decoration: none;
+  color:white;
+}
+
+a[href*='linkedin'] {
+  text-decoration: none;
+  color:white;
+}
