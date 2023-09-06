@@ -6,6 +6,11 @@ body {
     background: #f4f4f4;
 }
 
+header {
+    position: fixed;
+    width: 100%;
+}
+
 footer {
   margin-top: 50px;
   text-align: center;
@@ -14,20 +19,27 @@ footer {
   bottom: 5px;
   background-color: #212529;
   z-index: 2;
-  color: white;
 }
 
-.container {
-  margin: 0 auto;
-  height: auto;
+.copyright li {
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    list-style-type: none;
+    display: inline-block;
+    width: 200px;
 }
+.container {
+  margin-bottom: 100px;
+  margin-top: 50px;
+  }
 
 a[href*='github'] {
   text-decoration: none;
-  color:white;
+  color: white;
 }
 
 a[href*='linkedin'] {
   text-decoration: none;
-  color:white;
+  color: white;
 }

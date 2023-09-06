@@ -11,7 +11,8 @@ table, th, td {
          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-    <h2 style="color:red"> Welcome to Whiplash Database! </h2>
+    <main>
+    <h2 style="color:red"> Whiplash Database </h2>
     <br>
     <h4> We have these seat versions and hardware tests registered in database so far: </h4>
     <p> <a href="{{url_for('sample_register')}}"> Click </a> to register a new seat version!  </p>
@@ -48,4 +49,5 @@ table, th, td {
         </tr>
         {% endfor %}
     </table>
+    </main>
 {%endblock%}

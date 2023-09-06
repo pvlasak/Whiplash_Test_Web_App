@@ -14,17 +14,14 @@
 
     <title> Whiplash Database!</title>
   </head>
-  <body>
+  <header>
     {% include 'navbar.html' %}
-    </br>
+  </header>
+  </br>
     <div class="container">
       {% block content %}
       {% endblock %}
     </div>
-    <br>
-    <br>
-    <br>
-    <br>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -36,11 +33,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     -->
     <footer>
-      <p> <strong> &#169 </strong> Petr Vlasak <br>
-        <a href="https://github.com/pvlasak" target="_blank"> <strong> GitHub </strong>  </a>
-        |
-        <a href="https://www.linkedin.com/in/petr-vlasak-a24371b0/" target="_blank"> <strong> LinkedIn </strong> </a>
-      </p>
+      <ul class="copyright">
+        <li> &#169 Petr Vlasak </li>
+        <li> <a href="https://github.com/pvlasak" target="_blank"> GitHub </a> </li>
+        <li> <a href="https://www.linkedin.com/in/petr-vlasak-a24371b0/" target="_blank"> LinkedIn </a> </li>
+      </ul>
     </footer>
     </body>
 
