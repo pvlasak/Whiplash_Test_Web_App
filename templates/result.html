@@ -16,6 +16,7 @@ table, th, td {
   border: 2px solid black;
 }
 </style>
+<div class="result">
     {% for message in get_flashed_messages() %}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
          {{ message }}
@@ -23,13 +24,13 @@ table, th, td {
         </div>
     {% endfor %}
     <br>
-    <div>
-        <a href="{{url_for('profile')}}"> <button class="button button1"> < Return </button> </a>
-        <p style="font-size:160%;"> {{template_test.label}} </p>
+    <div id="return">
+        <a href="{{url_for('profile')}}"> <button class="btn btn-secondary"> < Return </button> </a>
+        <p> {{template_test.label}} </p>
     </div>
     <br>
     <div>
-    <a href="{{url_for('update', id=template_result.id) }}"> <button class="button button2">Edit Results</button> </a>
+    <a href="{{url_for('update', id=template_result.id) }}"> <button class="btn btn-primary">Edit Results</button> </a>
     </div>
     </br>
     {% if template_pulse.severity == 'Low' %}
@@ -40,4 +41,5 @@ table, th, td {
         {% include 'result_template_high.html' %}
     {% endif %}
     </br>
+</div>
 {%endblock%}

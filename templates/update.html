@@ -6,7 +6,7 @@
          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-<body>
+<div class="result-update">
     <h4> Edit the result data for {{ label_variable }}: </h4>
     <br>
     <form action="/update/{{update_variable.id}}" method="post">
@@ -75,5 +75,5 @@
             </div>
         </div>
     </form>
-</body>
+</div>
 {% endblock %}

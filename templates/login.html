@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
+    <div class="login-content">
     {% for message in get_flashed_messages() %}
         <div class="alert alert-primary alert-dismissible fade show" role="alert">
          {{ message }}
          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     {% endfor %}
-<h2 style="color:red"> Login! </h2>
-
+    <h2 style="color:red"> Login! </h2>
     <form action="" method="post" novalidate>
          {{ form.hidden_tag() }}
         <p>
@@ -27,5 +27,5 @@
         <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
     </form>
-
-{% endblock %}
+    </div>
+    {% endblock %}

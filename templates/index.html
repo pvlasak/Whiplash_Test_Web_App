@@ -1,14 +1,11 @@
 {% extends "base.html"  %}
 {%block content%}
-    <div class="container">
+    <div class="welcome_page">
         <h1> Welcome to Whiplash Database! </h1>
-        <p> New User? <a href="{{url_for('user_register')}}"> Click to register! </a> </p>
-        <br>
-        <figure>
-            <img src="./static/images/whiplash_pic_01.jpg", style="width:586px;height:319px;">
-            <br>
-            <a href="https://www.youtube.com/watch?v=Orl8J5gyAt0" target="_blank"> <figcation> Euro NCAP Whiplash Test </figcation></a>
-        </figure>
+        <div id="new_user_mess">
+            <p> New User?  </p>
+            <a href="{{url_for('user_register')}}"> Click to register! </a>
+        </div>
     </div>
 {%endblock%}
 

@@ -1,25 +1,39 @@
-h1 {
-    color: darkblue;
-    font-size: 30px;
+html, body {
+   width: 100%;
+   height: 100%;
+   margin: 0;
+   padding: 0;
+   background-color: #D3D3D3;
+   font-family: 'Raleway', sans-serif;
 }
-body {
-    background: #f4f4f4;
+
+.page-container {
+  position: relative;
+  min-height: 100vh;
 }
 
 header {
     position: fixed;
     width: 100%;
+    z-index: 2;
 }
 
 footer {
-  margin-top: 50px;
-  text-align: center;
-  position: fixed;
   width: 100%;
-  bottom: 5px;
+  height: 30px;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
   background-color: #212529;
-  z-index: 2;
 }
+
+.page-container .container {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    padding-bottom: 40px;
+    }
+
 
 .copyright li {
     font-weight: bold;
@@ -29,10 +43,122 @@ footer {
     display: inline-block;
     width: 200px;
 }
-.container {
-  margin-bottom: 100px;
-  margin-top: 50px;
-  }
+
+.page-container .login-content {
+    position: absolute;
+    top: 100px;
+    width: 100%;
+}
+
+.welcome_page {
+    position: relative;
+    height:700px;
+    background-image: url("../images/web_illustrations_tests_whiplash_v006.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }
+
+.welcome_page h1 {
+    padding-top: 120px;
+    padding-left: 150px;
+    font-size: 48px;
+    color: white;
+    font_weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.welcome_page #new_user_mess {
+    background-color: #ffbf00;
+    position: absolute;
+    padding: 40px;
+    margin-left: 20px;
+    top: 300px;
+    font-size: 24px;
+    border: 6px solid darkcyan;
+    border-radius: 15px;
+}
+
+#new_user_mess p {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.page-container .profile-content{
+    padding-top: 100px;
+}
+
+.page-container .profile-content table  {
+    background-color: gold;
+    border: 5px solid white;
+    border-radius: 20px;
+}
+
+.page-container .profile-content th {
+    border: 2px solid white;
+    padding: 30px;
+    font-size: 22px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.page-container .profile-content td  {
+    border: 2px solid white;
+    padding: 10px;
+    text-align: center;
+}
+
+.page-container .profile-content #tests  {
+    text-align: left;
+}
+
+
+.page-container .profile-content #tests a[href*='test_register']  {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    font-style: italic;
+    font-family: Georgia;
+    text-decoration: none;
+}
+
+.page-container .result {
+    padding-top: 100px;
+}
+
+.page-container .result #return {
+    height: 60px;
+    display: flex;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.page-container .result #return p {
+    padding-left: 50px;
+    font-size: 24px;
+    text-decoration: underline;
+}
+
+
+.page-container .result-update {
+    padding-top: 100px;
+}
+
+.page-container .profile-header {
+    height: 60px;
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.page-container .profile-header h2 {
+    color: DarkCyan;
+    padding-top: 18px;
+    padding-bottom: 18px;
+    padding-left: 40px;
+    font-weight: bold;
+}
 
 a[href*='github'] {
   text-decoration: none;
